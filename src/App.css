@@ -30,6 +30,78 @@ h2 {
 }
 button {
   cursor: pointer;
+  text-align: center;
+}
+
+button:hover {
+  background: black;
+}
+
+.secondary-btn {
+  border: none;
+  padding: 8px 20px;
+  border-radius: 7px;
+  margin-top: 10px;
+  color: white;
+  background: var(--primary-color);
+}
+
+.secondary-btn:hover {
+  background: black;
+}
+
+.secondary-btn-outline {
+  border: 1px solid var(--primary-color);
+  padding: 8px 20px;
+  border-radius: 7px;
+  margin-top: 10px;
+  color: var(--primary-color);
+}
+
+.secondary-btn-outline:hover {
+  background: none;
+}
+
+.secondary-btn-container {
+  text-align: center;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1000;
+  position: fixed;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 30vw;
+  min-height: 25vh;
+  max-width: 80vw;
+  max-height: 90vh;
+  width: max-content;
+  height: max-content;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.modal-bg {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  left: auto;
+  cursor: pointer;
 }
 
 :root {
