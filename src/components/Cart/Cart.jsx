@@ -3,9 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import "./Cart.css";
 
-import { CartListing } from "../CartListing/CartListing.jsx";
-import { Coupons } from "../Coupons/Coupons.jsx";
-import { CartAmountSummary } from "../CartAmountSummary/CartAmountSummary.jsx";
+import { CartListing } from "./components/CartListing/CartListing.jsx";
+import { Coupons } from "./components/Coupons/Coupons.jsx";
+import { CartAmountSummary } from "./components/CartAmountSummary/CartAmountSummary.jsx";
 import { useUserData } from "../../contexts/UserDataProvider.js";
 import { useData } from "../../contexts/DataProvider.js";
 import { useCart } from "../../contexts/CartProvider.js";

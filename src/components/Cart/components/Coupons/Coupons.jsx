@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { useState } from "react";
 import "./Coupons.css";
 
-import { useUserData } from "../../contexts/UserDataProvider.js";
+import { useUserData } from "../../../../contexts/UserDataProvider.js";
 
 export const Coupons = ({ couponSelected, setCouponSelected }) => {
   const [isCouponClicked, setIsCouponClicked] = useState(false);

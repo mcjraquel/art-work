@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { useUserData } from "../../contexts/UserDataProvider.js";
+import { useUserData } from "../../../../contexts/UserDataProvider.js";
 import "./CartAmountSummary.css";
 
-import { useCart } from "../../contexts/CartProvider";
+import { useCart } from "../../../../contexts/CartProvider.js";
 
 export const CartAmountSummary = ({ couponSelected }) => {
   const { userDataState } = useUserData();

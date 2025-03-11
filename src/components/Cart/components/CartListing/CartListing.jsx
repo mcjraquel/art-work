@@ -5,7 +5,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { HiCurrencyDollar } from "react-icons/hi";
 import "./CartListing.css";
 
-import { useUserData } from "../../contexts/UserDataProvider.js";
+import { useUserData } from "../../../../contexts/UserDataProvider.js";
 
 export const CartListing = () => {
   const {
