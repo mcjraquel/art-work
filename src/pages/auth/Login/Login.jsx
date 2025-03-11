@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import { BsEyeSlash } from "react-icons/bs";
@@ -10,10 +10,12 @@ import { useData } from "../../../contexts/DataProvider.js";
 export const Login = () => {
   const { loading } = useData();
   const [hidePassword, setHidePassword] = useState(true);
-  const { error, loginCredential, setLoginCredential, loginHandler } =
+  const { error, setError, loginCredential, setLoginCredential, loginHandler } =
     useAuth();
 
   const { email, password } = loginCredential;
+
+  useEffect(() => setError(''), []);
 
   return (
     !loading && (

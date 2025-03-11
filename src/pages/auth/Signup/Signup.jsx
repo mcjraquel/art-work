@@ -4,7 +4,7 @@ import { BsEyeSlash } from "react-icons/bs";
 import { BsEye } from "react-icons/bs";
 import { useState } from "react";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../../../contexts/AuthProvider.js";
 import { signupService } from "../../../services/auth-services/signupService";
 import { toast } from "react-hot-toast";
@@ -17,6 +17,8 @@ export const Signup = () => {
   const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
   const [signUpLoading, setSignUpLoading] = useState(false);
   const { setAuth, loginHandler, error, setError } = useAuth();
+  
+  useEffect(() => setError(''), []);
 
   const navigate = useNavigate();
 
@@ -199,7 +201,7 @@ export const Signup = () => {
               </label>
             </div>
           </div>
-          {error && <p className="error">{error[0]}</p>}
+          {error && <p className="error">{error}</p>}
 
           <div className="signup-btn-container">
             <input value="Sign Up" type="submit" />
