@@ -6,6 +6,7 @@ import { useAuth } from "../../contexts/AuthProvider.js";
 import { useData } from "../../contexts/DataProvider.js";
 import { useUserData } from "../../contexts/UserDataProvider.js";
 import "./Checkout.css";
+import { Modal } from "../Modal/Modal.jsx";
 import { AddressSection } from "./components/AddressSection/AddressSection";
 import { CartProductsSummary } from "./components/CartProductsSummary/CartProductsSummary";
 import { IoMdClose } from "react-icons/io";
@@ -78,48 +79,40 @@ export const Checkout = () => {
     };
 
   return (
-    <div>
-      <div className="modal-bg"></div>
-      <div className="modal">
-        <div className="modal-close">
-          <IoMdClose
-            onClick={() => setCheckoutIsShown(false)}
-          />
-        </div>
-        {
-          !loading &&
-          (userDataState.cartProducts.length ? (
-            <div>
-              <h1 className="page-heading">Checkout</h1>
-              <div className="checkout-container">
-                <CartProductsSummary />
-                <div className="other-summaries-container">
-                  <AddressSection />
-                  <BillingSummary />
-                </div>
-              </div>
-                <div className="place-order-btn-container">
-                  <button onClick={placeOrderHandler} className="place-order-btn">
-                    Place Order
-                  </button>
+    <Modal setModalIsShown={setCheckoutIsShown}>
+      {
+        !loading &&
+        (userDataState.cartProducts.length ? (
+          <div>
+            <h1 className="page-heading">Checkout</h1>
+            <div className="checkout-container">
+              <CartProductsSummary />
+              <div className="other-summaries-container">
+                <AddressSection />
+                <BillingSummary />
               </div>
             </div>
-          ) : (
-            <div className="no-items-container">
-              <h2 className="page-heading">No items in your cart to Checkout!</h2>
-              <button
-                className="explore-btn"
-                onClick={() => {
-                  navigate("/product-listing");
-                  setCheckoutIsShown(false);
-                }}
-              >
-                Explore
-              </button>
+              <div className="place-order-btn-container">
+                <button onClick={placeOrderHandler} className="place-order-btn">
+                  Place Order
+                </button>
             </div>
-          ))
-        }
-      </div>
-    </div>
-  );
+          </div>
+        ) : (
+          <div className="no-items-container">
+            <h2 className="page-heading">No items in your cart to Checkout!</h2>
+            <button
+              className="explore-btn"
+              onClick={() => {
+                navigate("/product-listing");
+                setCheckoutIsShown(false);
+              }}
+            >
+              Explore
+            </button>
+          </div>
+        ))
+      }
+    </Modal>
+  )
 };

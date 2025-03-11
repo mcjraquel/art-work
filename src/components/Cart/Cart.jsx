@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import "./Cart.css";
 
+import { Modal } from "../Modal/Modal.jsx";
 import { CartListing } from "./components/CartListing/CartListing.jsx";
 import { Coupons } from "./components/Coupons/Coupons.jsx";
 import { CartAmountSummary } from "./components/CartAmountSummary/CartAmountSummary.jsx";
@@ -34,47 +35,39 @@ export const Cart = () => {
   };
 
   return (
-    <div>
-      <div className="modal-bg"></div>
-      <div className="modal">
-        <div className="modal-close">
-          <IoMdClose
-            onClick={() => setCartIsShown(false)}
-          />
-        </div>
-        {!loading &&
-        (userDataState.cartProducts.length ? (
-          <div className="cart-content">
-            <h1 className="page-heading">Cart</h1>
-            <div className="cart-container">
-              <CartListing />
-              <div className="payment-section">
-                <Coupons
-                  couponSelected={couponSelected}
-                  setCouponSelected={setCouponSelected}
-                />
-                <CartAmountSummary couponSelected={couponSelected} />
-              </div>
+    <Modal setModalIsShown={setCartIsShown}>
+      {!loading &&
+      (userDataState.cartProducts.length ? (
+        <div className="cart-content">
+          <h1 className="page-heading">Cart</h1>
+          <div className="cart-container">
+            <CartListing />
+            <div className="payment-section">
+              <Coupons
+                couponSelected={couponSelected}
+                setCouponSelected={setCouponSelected}
+              />
+              <CartAmountSummary couponSelected={couponSelected} />
             </div>
-            <Link onClick={placeOrderHandler}>
-              Place Order
-            </Link>
           </div>
-        ) : (
-          <div className="no-items-container">
-            <h2 className="page-heading">Cart is Empty!</h2>
-            <button
-              className="explore-btn"
-              onClick={() => {
-                setCartIsShown(false);
-                navigate("/product-listing");
-              }}
-            >
-              Explore
-            </button>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+          <Link onClick={placeOrderHandler}>
+            Place Order
+          </Link>
+        </div>
+      ) : (
+        <div className="no-items-container">
+          <h2 className="page-heading">Cart is Empty!</h2>
+          <button
+            className="explore-btn"
+            onClick={() => {
+              setCartIsShown(false);
+              navigate("/product-listing");
+            }}
+          >
+            Explore
+          </button>
+        </div>
+      ))}
+    </Modal>
+  )
 };
