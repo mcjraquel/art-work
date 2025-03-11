@@ -1,10 +1,12 @@
-import React from "react";
-import { useUserData } from "../../../../contexts/UserDataProvider.js";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useUserData } from "../../contexts/UserDataProvider.js";
 import "./CartAmountSummary.css";
 
+import { useCart } from "../../contexts/CartProvider";
+
 export const CartAmountSummary = ({ couponSelected }) => {
-  const { userDataState, dispatch } = useUserData();
+  const { userDataState } = useUserData();
+  const { setTotalCouponDiscount, setTotalDiscountedPriceAfterCoupon, setTotalOriginalPrice} = useCart();
 
   const totalDiscountedPriceBeforeCoupon = userDataState.cartProducts?.reduce(
     (acc, curr) => acc + curr.discounted_price * curr.qty,
@@ -30,17 +32,9 @@ export const CartAmountSummary = ({ couponSelected }) => {
 
   const isCouponApplied = couponSelected.length ? true : false;
 
-  const placeOrderHandler = () => {
-    dispatch({
-      type: "SET_ORDER",
-      payload: {
-        cartItemsTotal: totalOriginalPrice,
-        cartItemsDiscountTotal: totalDiscountedPriceAfterCoupon,
-        couponDiscountTotal: totalCouponDiscount,
-        orderAddress: userDataState.addressList[0],
-      },
-    });
-  };
+  useEffect(() => setTotalCouponDiscount(totalCouponDiscount), [totalCouponDiscount]);
+  useEffect(() => setTotalDiscountedPriceAfterCoupon(totalDiscountedPriceAfterCoupon), [totalDiscountedPriceAfterCoupon]);
+  useEffect(() => setTotalOriginalPrice(totalOriginalPrice), [totalOriginalPrice]);
 
   return (
     <div className="cart-price-container">
@@ -70,14 +64,10 @@ export const CartAmountSummary = ({ couponSelected }) => {
 
       <div className="total-discount-container">
         <span>
-          You saved $
-          {(totalOriginalPrice - totalDiscountedPriceAfterCoupon).toFixed(2)}{" "}
+          You saved <b>$
+          {(totalOriginalPrice - totalDiscountedPriceAfterCoupon).toFixed(2)}{" "}</b>
         </span>
       </div>
-
-      <Link onClick={placeOrderHandler} to="/checkout">
-        Place Order
-      </Link>
     </div>
   );
 };
