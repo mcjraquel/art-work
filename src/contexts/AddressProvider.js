@@ -26,6 +26,7 @@ export function AddressProvider({ children }) {
   const [isEdit, setIsEdit] = useState(false);
 
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+  const [isSelectAddressModalOpen, setIsSelectAddressModalOpen] = useState(false);
 
   const deleteAddress = async (address) => {
     try {
@@ -52,6 +53,8 @@ export function AddressProvider({ children }) {
         setAddressForm,
         isAddressModalOpen,
         setIsAddressModalOpen,
+        isSelectAddressModalOpen,
+        setIsSelectAddressModalOpen,
         isEdit,
         setIsEdit,
         deleteAddress,

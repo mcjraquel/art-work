@@ -1,23 +1,26 @@
 import "./CartProductsSummary.css";
 
 import React from "react";
+import { HiCurrencyDollar } from "react-icons/hi";
 import { useUserData } from "../../../../contexts/UserDataProvider.js";
 
 export const CartProductsSummary = () => {
   const { userDataState } = useUserData();
   return (
     <div className="product-details-container">
-      <h1>In Your Bag</h1>
       <div className="ordered-products-container">
         {userDataState.cartProducts?.map(
           ({ id, img, name, qty, discounted_price }) => (
             <div key={id} className="ordered-product-card">
               <img src={img} alt={name} />
-              <span>
-                <span>{name} - </span>
-                <span>{qty}</span>
+              <div className="ordered-product-description">
+                <h3>{name}</h3>
+                <p>Qty: {qty}</p>
+              </div>
+              <span className="ordered-price">
+                <HiCurrencyDollar />
+                {discounted_price}
               </span>
-              <span>${discounted_price}</span>
             </div>
           )
         )}

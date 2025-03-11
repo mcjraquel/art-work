@@ -1,0 +1,50 @@
+
+.checkout-container {
+  display: flex;
+  flex-flow: column nowrap;
+  overflow-y: scroll;
+  width: 100%;
+  max-height: 60vh;
+}
+
+.page-heading {
+  text-align: center;
+  margin: 20px;
+}
+
+.place-order-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.place-order-btn {
+  border: none;
+  color: white;
+  background-color: var(--primary-color);
+  padding: 12px 36px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.place-order-btn:hover {
+  cursor: pointer;
+  background-color: black;
+  text-align: center;
+}
+
+.other-summaries-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 992px) {
+  .checkout-container {
+    flex-flow: row nowrap;
+    overflow-y: unset;
+  }
+}

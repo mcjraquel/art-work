@@ -1,11 +1,10 @@
 import "./AddressModal.css";
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 
-import { useState } from "react";
 import { addAddressService } from "../../../../services/address-services/addAddressService";
 import { useUserData } from "../../../../contexts/UserDataProvider.js";
 import { updateAddressService } from "../../../../services/address-services/updateAddressService";
-import { toast } from "react-hot-toast";
 import { useAddress } from "../../../../contexts/AddressProvider.js";
 import { useAuth } from "../../../../contexts/AuthProvider.js";
 
@@ -71,9 +70,10 @@ export const AddressModal = () => {
   };
 
   return (
-    <div className="address-modal-container">
-      <div className="address-input-container">
-        <h1>Address Form</h1>
+    <div>
+      <div className="modal-bg"></div>
+      <div className="modal">
+        <h2 className="page-heading">Address Form</h2>
         <form
           onSubmit={(e) => {
             if (!isEdit) {
@@ -105,7 +105,7 @@ export const AddressModal = () => {
               setIsEdit(false);
             }
           }}
-          className="input-container"
+          className="address-input-container"
         >
           <input
             name="name"

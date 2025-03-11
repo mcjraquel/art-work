@@ -9,9 +9,10 @@
   padding: 10px;
   border-radius: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: baseline;
 }
+
 .address-container .address-card .name {
   margin-bottom: 5px;
   font-size: larger;
@@ -28,20 +29,6 @@
   text-align: center;
 }
 
-.add-new-address-btn:hover {
-  cursor: pointer;
-  background: black;
-}
-
-.add-new-address-btn {
-  border: none;
-  padding: 8px 20px;
-  border-radius: 7px;
-  margin-top: 10px;
-  color: white;
-  background: var(--primary-color);
-}
-
 .address-btns {
   margin-top: 10px;
 }
@@ -56,14 +43,4 @@
 .address-btns button:hover {
   cursor: pointer;
   background-color: var(--secondary-background-color-onhover);
-}
-
-.address-card input {
-  margin-right: 10px;
-}
-
-@media (min-width: 768px) {
-  .address-container {
-    width: 50vw;
-  }
 }

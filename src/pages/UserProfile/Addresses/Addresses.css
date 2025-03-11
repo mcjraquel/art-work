@@ -19,7 +19,7 @@
   margin-right: 5px;
 }
 
-.address-card .name {
+.address-card .name, .selection-address-card .name {
   font-weight: 600;
   margin-bottom: 10px;
   font-size: larger;
