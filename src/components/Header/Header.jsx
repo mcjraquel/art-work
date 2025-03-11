@@ -10,12 +10,14 @@ import { useData } from "../../contexts/DataProvider.js";
 import { useAuth } from "../../contexts/AuthProvider.js";
 import { CgShoppingCart } from "react-icons/cg";
 import { useUserData } from "../../contexts/UserDataProvider.js";
+import { useCart } from "../../contexts/CartProvider.js";
 
 export const Header = () => {
   const { auth } = useAuth();
   const { dispatch } = useData();
   const navigate = useNavigate();
   const { userDataState } = useUserData();
+  const { setCartIsShown } = useCart();
   const [showHamburger, setShowHamburger] = useState(true);
   const getActiveStyle = ({ isActive }) => {
     return { color: isActive ? "white" : "" };
@@ -34,6 +36,10 @@ export const Header = () => {
 
   const isProductInWishlist = () =>
     Number(totalProductsInWishlist) ? true : false;
+
+  const showCart = () => {
+    setCartIsShown(true);
+  }
 
   return (
     <nav>
@@ -98,18 +104,20 @@ export const Header = () => {
           )}
         </NavLink>
         <NavLink
-          onClick={() => setShowHamburger(true)}
+          onClick={() => {
+            setShowHamburger(true);
+            showCart();
+          }}
           style={getActiveStyle}
-          to="/cart"
         >
           <span>{!showHamburger ? "Cart" : ""}</span>
-          <CgShoppingCart size={25} className="cart" />{" "}
-          {isProductInCart() && (
-            <span className="cart-count cart-count-mobile">
-              {" "}
-              {totalProductsInCart}{" "}
-            </span>
-          )}
+            <CgShoppingCart size={25} className="cart" />{" "}
+            {isProductInCart() && (
+              <span className="cart-count cart-count-mobile">
+                {" "}
+                {totalProductsInCart}{" "}
+              </span>
+            )}
         </NavLink>
       </div>
       {showHamburger && (

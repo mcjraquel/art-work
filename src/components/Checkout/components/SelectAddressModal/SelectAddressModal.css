@@ -1,0 +1,25 @@
+.selection-address-card input {
+    margin-right: 10px;
+}
+
+.checkout-container .selection-address-card {
+    border: 1px solid rgb(232, 232, 232);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.address-container .selection-address-card .name {
+    margin-bottom: 5px;
+    font-size: larger;
+}
+
+.address-container .selection-address-card .address {
+    color: white;
+    font-size: 15px;
+    margin-right: 5px;
+    color: grey;
+}

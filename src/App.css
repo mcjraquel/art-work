@@ -30,6 +30,40 @@ h2 {
 }
 button {
   cursor: pointer;
+  text-align: center;
+}
+
+button:hover {
+  background: black;
+}
+
+.secondary-btn {
+  border: none;
+  padding: 8px 20px;
+  border-radius: 7px;
+  margin-top: 10px;
+  color: white;
+  background: var(--primary-color);
+}
+
+.secondary-btn:hover {
+  background: black;
+}
+
+.secondary-btn-outline {
+  border: 1px solid var(--primary-color);
+  padding: 8px 20px;
+  border-radius: 7px;
+  margin-top: 10px;
+  color: var(--primary-color);
+}
+
+.secondary-btn-outline:hover {
+  background: none;
+}
+
+.secondary-btn-container {
+  text-align: center;
 }
 
 :root {
