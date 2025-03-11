@@ -9,8 +9,6 @@ export const AddressSection = () => {
   const { userDataState } = useUserData();
   const { isSelectAddressModalOpen, setIsSelectAddressModalOpen } = useAddress();
 
-  console.log(userDataState.addressList)
-  console.log(userDataState.orderDetails.orderAddress)
   return (
     <div className="address-container">
       {userDataState.addressList?.map((address, index) => {
